@@ -9,35 +9,50 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Signin Template for Bootstrap</title>
+    <title>BreadStoryDemo - Sign in</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/signin.css" rel="stylesheet">
-
-   
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function (){
+    		$( ".form-signin" ).submit(function( event ) {
+    			var attr = {};
+    			if ($("#remember")[0].checked) attr['expires'] = 7; 
+    			$.cookie('bsd-user', $("#inputEmail").val(), attr);
+    			//window.location = "link to page after login";
+					event.preventDefault();
+				});
+    	});
+    	
+    </script>
   </head>
 
   <body>
 
     <div class="container">
 
-      <form class="form-signin">
+      <form name="sign-in" class="form-signin">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" pattern=".{6,}" title="At least 6 characters" required>
         <div class="checkbox">
           <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <input id="remember" type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      	<p style="margin-top: 10px;">
+      		<a href="reset-password.html">Forgot password?</a><br/>
+      		<a href="sign-up.html">Create Account</a>
+      	</p>
       </form>
-
     </div> <!-- /container -->
 
 
