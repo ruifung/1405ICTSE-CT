@@ -1,262 +1,302 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html>
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="img/favicon.ico">
 
-    <title>Shop Homepage - Start Bootstrap Template</title>
+    <title>Apple - Mobile Phones TECHLABX</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+		<style type="text/css">
 
-    <!-- Custom CSS -->
-    <link href="css/shop-homepage.css" rel="stylesheet">
+			.thumbnail:hover{
+			-moz-box-shadow: 0px 0px 11px #00B3FF;
+			-webkit-box-shadow: 0px 0px 11px #00B3FF;
+			box-shadow: 0px 0px 11px #00B3FF;
+			cursor: pointer; /*The cursor is a pointer and indicates a link, that's why when you move to the thumbnail, mouse icon changes to pointer icon*/
+			-webkit-transition: all .25s ease;
+       		-moz-transition: all .25s ease;
+        	-ms-transition: all .25s ease;
+         	-o-transition: all .25s ease;
+            transition: all .25s ease; 	/* NOTICE THIS PART. While mouse is hovered to the thumbnail, easing transition is set on (bright red border appears), but instantly dissapear when mouse moves away.*/		
+			}
+			.thumbnail {
+			-webkit-transition: all .25s ease;
+       		-moz-transition: all .25s ease;
+        	-ms-transition: all .25s ease;
+         	-o-transition: all .25s ease;
+            transition: all .25s ease; /* NOTICE THIS PART. While mouse goes in or outside the thumbnail, easing transition is always set ON while applying and removing the bright red border.*/	
+				}
+			.navbar-wrapper .navbar .container { width: auto;}
+			/*fix width*/
+			.navbar-inverse 
+			{
+			  	background-color: #005BA6;
+			  	border-color: #004E80;
+			} /*changed colours for nav bar*/
+			.navbar-inverse .navbar-nav > li > a {
+				color: #ABF5FF;
+				-webkit-transition: all .25s ease;
+       			-moz-transition: all .25s ease;
+        		-ms-transition: all .25s ease;
+         		-o-transition: all .25s ease;
+            	transition: all .25s ease;
+			}
+			.navbar-inverse .navbar-brand {
+  				color: #D8D8D8;
+			}
+			.dropdown-menu 
+			{
+				background-color: #080808;
+			} /*changed colour for dropdown menu*/
+			.dropdown-header 
+			{
+				color: #999;
+			}
+			.dropdown-menu > li > a
+			{
+				color: #DDD;
+			}
+			.lead 
+			{
+				text-align: justify;
+    			text-justify: inter-word;
+				font-family: "Myriad Pro", "Lucida Grande", Arial, Verdana, Helvetica, "Helvetica Neue", sans-serif;
+				font-weight:100;
+			}/*changed the patterns of header @ bottom parts*/
+			.btn-primary:hover,
+			.btn-primary:focus,
+			.btn-primary.focus,
+			.btn-primary:active,
+			.btn-primary.active,
+			.open > .dropdown-toggle.btn-primary 
+			{
+				background-color:#319CFF;
+				border-color:#35C3FF;
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+			} /*changed hover and focus colour to primary (blue) button*/
+			.btn-primary
+			{
+				-webkit-transition: all .25s ease;
+       			-moz-transition: all .25s ease;
+        		-ms-transition: all .25s ease;
+         		-o-transition: all .25s ease;
+            	transition: all .25s ease;
+			} /*added transition while hovering in && out to primary (blue) button*/
+			.btn-default 
+			{
+				color: #E0E0E0;
+  				background-color: #9F0002;
+				border-color: rgba(168, 0, 0, 0.53);
+				-webkit-transition: all .25s ease;
+       			-moz-transition: all .25s ease;
+        		-ms-transition: all .25s ease;
+         		-o-transition: all .25s ease;
+            	transition: all .25s ease;
+			} /*changed colours of active red buttons, added transition while hovering in && out*/
+			.btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default 
+			{
+				color: #FFF;
+				background-color: #DD2B2B;
+				border-color: #EFBABA;
+				
+			} /*changed colours of red buttons*/
+			.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus
+			{
+				-webkit-transition: all .25s ease;
+       			-moz-transition: all .25s ease;
+        		-ms-transition: all .25s ease;
+         		-o-transition: all .25s ease;
+            	transition: all .25s ease;
+			} /*added transitions to nav*/
+			.dropdown-menu > li > a
+			{
+				-webkit-transition: all .25s ease;
+       			-moz-transition: all .25s ease;
 
+        		-ms-transition: all .25s ease;
+         		-o-transition: all .25s ease;
+            	transition: all .25s ease;
+			} /*added transitions to dropdown menu navigation*/
+			.col-lg-6{
+				float:right;
+			} /*changed position of search bar (L to R)*/
+		</style>
+        
+    <!-- Custom CSS for heroic features-->      
+    <link href="css/heroic-features.css" rel="stylesheet">
+    
+    
+    <!-- Custom CSS for featurette heading-->  
+    <link href="css/custom-featurette.css" rel="stylesheet">
+    
 </head>
 
 <body>
+<div class="navbar-wrapper">
+      <div class="container">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> <!--if navbar-static-top, users can only reach the navbar back to top; w/ navbar-fixed-top, the navbar follows users everywhere when they scroll-->
+          <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">BreadStoryDEMO</a>
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html">BREADSTORYDEMO</a>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="#">Our Products</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Feedback</a></li>
+
+
+                
+              </ul>
             </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+          </div>
+        </nav>
 
-    <!-- Page Content -->
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col-md-3">
-                <p class="lead">Products</p>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Category 1</a>
-                    <a href="#" class="list-group-item">Category 2</a>
-                    <a href="#" class="list-group-item">Category 3</a>
-                </div>
-            </div>
-
-            <div class="col-md-9">
-
-                <div class="row carousel-holder">
-
-                    <div class="col-md-12">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                            </div>
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$24.99</h4>
-                                <h4><a href="#">First Product</a>
-                                </h4>
-                                <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$64.99</h4>
-                                <h4><a href="#">Second Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">12 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$74.99</h4>
-                                <h4><a href="#">Third Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">31 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$84.99</h4>
-                                <h4><a href="#">Fourth Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">6 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$94.99</h4>
-                                <h4><a href="#">Fifth Product</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">18 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <h4><a href="#">Like this template?</a>
-                        </h4>
-                        <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
-                        <a class="btn btn-primary" target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">View Tutorial</a>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
+      </div>
     </div>
-    <!-- /.container -->
+    
+    
+    <!-- Container starts-->
+        <div class="container">
 
-    <div class="container">
+        <!-- Featurette Header -->
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">Delicious. Delightful</span></h2>
+          <p class="lead">Cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake cake.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <img class="featurette-image img-responsive center-block" src="http://placehold.it/500x500" alt="Generic placeholder image"><!--500x500-->
+
+        </div>
+      </div>
 
         <hr>
 
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+        <!-- Title -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Featured Products</h3>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Page Features -->
+        <div class="row text-center">
+
+            <div class="col-md-3 col-sm-6 hero-feature">
+                <div onclick="location.href='#';" class="thumbnail">
+                    <img src="http://placehold.it/800x500" alt="">
+                    <div class="caption">
+                        <h3>Cake #1</h3>
+                        <p>Nothing beats a refreshing tasty fresh cake, visually arresting!</p>
+                        <p>
+                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </footer>
 
-    </div>
-    <!-- /.container -->
+            <div class="col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail">
+                    <img src="http://placehold.it/800x500" alt="">
+                    <div class="caption">
+                        <h3>Cake #2</h3>
+                        <p>Nothing beats a refreshing tasty fresh cake, visually arresting!</p>
+                        <p>
+                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+            <div class="col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail">
+                    <img src="http://placehold.it/800x500" alt="">
+                    <div class="caption">
+                        <h3>Cake #3</h3>
+                        <p>Nothing beats a refreshing tasty fresh cake, visually arresting!</p>
+                        <p>
+                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+            <div class="col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail">
+                    <img src="http://placehold.it/800x500" alt="">
+                    <div class="caption">
+                        <h3>Cake #4</h3>
+                        <p>Nothing beats a refreshing tasty fresh cake, visually arresting!</p>
+                        <p>
+                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-</body>
+        </div>
+        <!-- /.row -->
 
+
+
+
+        <!-- Container ends-->
+    
+    
+      <!-- Search bar
+      ==================================================== -->
+      <br>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+		<br>
+      <!-- /Search bar
+      ==================================================== -->
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p><a onclick="copyright();" href="#">&copy; 2014 TechlabX Partnership, Inc.</a> &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+    
+    <!-- VeCopyright -->
+    <script src="copyright.js"></script>
+	<!-- /Copyright -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster, load all the contents of html, only then load the scripts -->
+    <script src="css/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
 </html>
