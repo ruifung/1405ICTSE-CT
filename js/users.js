@@ -18,7 +18,7 @@ var userJS = {
     //Returns username on success.
     //Throws error on failure.
     // Errors must be caught. (By caught I mean try/catch)
-    login : function(username, password) {
+    login : function(username, password, persist) {
         var current = sessionStorage.getItem("usersJS.currentUser");
         //IF ALREADY LOGGED IN, THROW ERROR.
         if(current === null || current === "") {
@@ -30,8 +30,11 @@ var userJS = {
         }
         //IF INVALID PASSWORD, THROW ERROR.
         //ELSE RETURN USERNAME!
-        if (this.checkpw()) {
+        if (this.checkpw(username, password)) {
             sessionStorage.setItem("usersJS.currentUser",username);
+            if(persist) {
+                localStorage.setItem("usersJS.persistUser",username);
+            }
             return username;
         } else {
             throw this.errors.PasswordError;
@@ -42,6 +45,7 @@ var userJS = {
     //No return value, always suceeds.
     logout : function() {
         sessionStorage.setItem("usersJS.currentUser","");
+        localStorage.setItem("usersJS.persistUser","");
     },
     
     //Get currently logged in user
@@ -67,7 +71,7 @@ var userJS = {
         return {
             username: username,
             email: this.users[username].eml
-        }
+        };
     },
     
     //Register a user
@@ -96,7 +100,7 @@ var userJS = {
     },
     
     changepw : function(username, oldpwd, newpwd) {
-        if (this.checkpw(username)) {
+        if (this.checkpw(username,oldpwd)) {
             this.users[username].pwd = window.btoa(newpwd);
             this.saveData();
         } else {
@@ -119,6 +123,11 @@ var userJS = {
         var jsonString = LZString.decompressFromUTF16(compressed);
         var loadedData = JSON.parse(jsonString);
         jQuery.extend(this.users,loadedData);
+        
+        var persistUser = localStorage.getItem("usersJS.persistUser");
+        if (typeof this.users[persistUser] !== undefined) {
+            sessionStorage.setItem("usersJS.currentUser",persistUser);
+        }
     }
 }
 userJS.loadData();
