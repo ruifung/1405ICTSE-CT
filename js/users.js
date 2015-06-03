@@ -30,7 +30,7 @@ var userJS = {
         }
         //IF INVALID PASSWORD, THROW ERROR.
         //ELSE RETURN USERNAME!
-        if (this.users[username].pwd === window.btoa(password)) {
+        if (this.checkpw()) {
             sessionStorage.setItem("usersJS.currentUser",username);
             return username;
         } else {
@@ -55,30 +55,54 @@ var userJS = {
         return user;
     },
     
+    
+    //Gets user information
+    // returns object with user data.
+    getUserInfo : function(username) {
+        //IF USERNAME DOES NOT EXIST, THROW ERROR.
+        if ((typeof this.users[username]) === "undefined") {
+            throw this.errors.UsernameError;
+        }
+        
+        return {
+            username: username,
+            email: this.users[username].eml
+        }
+    },
+    
     //Register a user
     // No return value
     // Throws exception on failure. (Catch them.)
-    register : function(username, pwd1, pwd2, email1, email2) {
-        if (pwd1 !== pwd2) {
-            throw this.errors.PasswordError;
-        }
-        if (email1 !== email2) {
-            throw this.errors.EmailError;
-        }
-        if(username.length < 6) {
+    register : function(username, pwd, email) {
+        if (username.length < 6) {
             throw this.errors.UsernameError;
+        }
+        if (pwd.length < 6) {
+            throw this.errors.PasswordError;
         }
         
         //YES I KNOW IM STORING IT IN PLAINTEXT
         var userData = {
-            pwd: window.btoa(pwd1),
-            eml: email1
+            pwd: window.btoa(pwd),
+            eml: email
         };
         this.users[username] = userData;
         this.saveData();
         return;
     },
     
+    checkpw : function(username,password) {
+        return this.users[username].pwd === window.btoa(password)
+    },
+    
+    changepw : function(username, oldpwd, newpwd) {
+        if (this.checkpw(username)) {
+            this.users[username].pwd = window.btoa(newpwd);
+            this.saveData();
+        } else {
+            throw this.errors.PasswordError;
+        }
+    },
     
     //LOADDATA AND SAVEDATA ARE USED INTERNALLY.
     saveData : function() {
