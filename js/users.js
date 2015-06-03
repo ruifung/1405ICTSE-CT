@@ -5,6 +5,7 @@
 var userJS = {
     
     users : {},
+    userProfiles: {},
     //THESE ARE ERROR CODES FOR YOU TO COMPARE AGAINST.
     //USE LIKE userJS.errors.UsernameError or something like that yes?
     errors : {
@@ -108,11 +109,27 @@ var userJS = {
         }
     },
     
+    setUserProfile : function(username,profileObj) {
+        this.userProfiles[username] = profileObj;
+        this.saveData();
+    },
+    
+    getUserProfile : function(username) {
+        if(this.users[username] === undefined || this.userProfiles[username] === undefined) {
+            throw this.errors.UsernameError;
+        }
+        else return this.userProfiles[username];
+    },
+    
     //LOADDATA AND SAVEDATA ARE USED INTERNALLY.
     saveData : function() {
         var jsonString = JSON.stringify(this.users);
         var compressed = LZString.compressToUTF16(jsonString);
         localStorage.setItem("usersJS.emuDB",compressed);
+        
+        jsonString = JSON.stringify(this.userProfiles);
+        compressed = LZString.compressToUTF16(jsonString);
+        localStorage.setItem("usersJS.profileDB",compressed);
     },
     
     loadData : function() {
@@ -123,6 +140,14 @@ var userJS = {
         var jsonString = LZString.decompressFromUTF16(compressed);
         var loadedData = JSON.parse(jsonString);
         jQuery.extend(this.users,loadedData);
+        
+        compressed = localStorage.getItem("usersJS.profileDB");
+        if (typeof compressed === null) {
+            return;
+        }
+        jsonString = LZString.decompressFromUTF16(compressed);
+        loadedData = JSON.parse(jsonString);
+        jQuery.extend(this.userProfiles,loadedData);
         
         var persistUser = localStorage.getItem("usersJS.persistUser");
         if (typeof this.users[persistUser] !== undefined) {
