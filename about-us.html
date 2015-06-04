@@ -167,9 +167,10 @@
                 <li class="active"><a href="about-us.html">About Us</a></li>
                 <li><a href="feedback.html">Feedback</a></li></ul>
                <ul class="nav navbar-nav navbar-right">
-               <li><a href="user-profile.html">Your account</a></li>
-				<li><a href="sign-in.html">Sign in</a></li>
-                <li><a href="register.html">Register</a></li>
+              <li class="logged"><a href="user-profile.html">Your account</a></li>
+              <li class="logged"><a href="javascript:User.logout();">Logout</a></li>
+							<li class="unlogged"><a href="sign-in.html">Sign in</a></li>
+              <li class="unlogged"><a href="register.html">Register</a></li>
                 </ul>
 
                 
@@ -245,5 +246,15 @@ States. </p>
     <script src="js/ie10-viewport-bug-workaround.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/users.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function (){
+    		if(User.login){
+    			if (!User.login())$('.logged').css("display","none");
+    			else $('.unlogged').css("display","none");
+    		}
+    	});
+    </script>
   </body>
 </html>

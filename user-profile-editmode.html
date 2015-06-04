@@ -211,11 +211,11 @@
                         <label>Enter Old Password</label>
                         <input type="password" class="form-control">
                         <label>Enter New Password</label>
-                        <input type="password" class="form-control">
+                        <input type="password" id="pwd1" class="form-control">
                         <label>Confirm New Password</label>
-                        <input type="password" class="form-control" />
+                        <input type="password" id="pwd2" class="form-control" />
                         <br>
-                        <a href="#" class="btn btn-warning">Change Password</a>
+                        <a href="javascript:chpwd();" class="btn btn-warning">Change Password</a>
                     </div>
                 </div>
             </div>
@@ -257,6 +257,14 @@
 					}
 				}
 				window.location="user-profile.html";
+    	}
+    	function chpwd(){
+    		if($('#pwd1').val() == $('#pwd2').val()){
+    			alert("Password changed successful!");
+    			window.location="user-profile.html";
+    		}else{
+    			alert("Password doesn't match!");
+    		}
     	}
     </script>
 </body>

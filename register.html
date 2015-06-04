@@ -151,7 +151,6 @@
                 <li><a href="about-us.html">About Us</a></li>
                 <li><a href="feedback.html">Feedback</a></li></ul>
                <ul class="nav navbar-nav navbar-right">
-               <li><a href="user-profile.html">Your account</a></li>
 				<li><a href="sign-in.html">Sign in</a></li>
                 <li class="active"><a href="register.html">Register</a></li>
                 </ul>
@@ -174,21 +173,21 @@
                 
 				<div class="form-group col-lg-12">
 					<label>Email Address</label>
-					<input type="" name="" class="form-control" id="" value="">
+					<input type="" id="email1" name="" class="form-control" id="" value="">
 				</div>
 				
 				<div class="form-group col-lg-12">
 					<label>Repeat Email Address</label>
-					<input type="" name="" class="form-control" id="" value="">
+					<input type="" name="" class="form-control" id="email2" value="">
 				</div>
 				<div class="form-group col-lg-12">
 					<label>Password</label>
-					<input type="password" name="" class="form-control" id="" value="">
+					<input type="password" name="" class="form-control" id="password1" id="" value="">
 				</div>
 				
 				<div class="form-group col-lg-12">
 					<label>Repeat Password</label>
-					<input type="password" name="" class="form-control" id="" value="">
+					<input type="password" name="" class="form-control" id="password2" id="" value="">
 				</div>
 								
 							
@@ -219,7 +218,7 @@
 					Acceptance of an order by us is dependent on our suppliers ability to provide the product. (Paragraph 13.5.6)
 				</p></div>
 				<div class="container">
-				<button type="submit" class="btn btn-primary">Register</button></div>
+				<button type="submit" id="signup" class="btn btn-primary">Register</button></div>
 			</div>
 		</div>
 	</section>
@@ -245,6 +244,25 @@
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/users.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function (){
+    		if(User.login()) window.location = "user-profile.html";
+    		$( "#signup" ).click(function( event ) {
+    			if($('#email1').val() != $('#email2').val()){
+    				alert("Email doesn't match!");
+    				return;	
+    			}
+    			if($('#password1').val() != $('#password2').val()){
+    				alert("Password doesn't match!");
+    				return;	
+    			}
+    			User.login($("#email1").val());
+    			window.location = "index.html";
+				});
+    	});
+    </script>
   </body>
 </html>
 </body>
