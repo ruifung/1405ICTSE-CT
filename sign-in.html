@@ -130,20 +130,6 @@
 		</style>
     <!-- Custom styles for this template -->
     <link href="css/signin.css" rel="stylesheet">
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/jquery.cookie.js"></script>
-    <script type="text/javascript">
-    	$(document).ready(function (){
-    		$( ".form-signin" ).submit(function( event ) {
-    			var attr = {};
-    			if ($("#remember")[0].checked) attr['expires'] = 7; 
-    			$.cookie('bsd-user', $("#inputEmail").val(), attr);
-    			//window.location = "link to page after login";
-					event.preventDefault();
-				});
-    	});
-    	
-    </script>
   </head>
 
   <body>
@@ -207,5 +193,18 @@
     <script src="js/ie10-viewport-bug-workaround.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function (){
+    		if($.cookie('bsd-user')) window.location = "user-profile.html";
+    		$( ".form-signin" ).submit(function( event ) {
+    			var attr = {};
+    			if ($("#remember")[0].checked) attr['expires'] = 7; 
+    			$.cookie('bsd-user', $("#inputEmail").val(), attr);
+    			//window.location = "link to page after login";
+					event.preventDefault();
+				});
+    	});
+    </script>
   </body>
 </html>
