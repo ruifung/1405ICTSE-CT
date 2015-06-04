@@ -172,7 +172,7 @@
         <section style="padding-bottom: 50px; padding-top: 50px;">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="http://placehold.it/250x250" class="img-rounded img-responsive" />
+                    <img id="profile" src="http://placehold.it/250x250" class="img-rounded img-responsive" />
                     <br />
                     <br />
                     <label>Username:</label>
@@ -221,12 +221,13 @@
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
-    
+    <script type="text/javascript" src="js/jquery.md5.js"></script>
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
     <script type="text/javascript">
     	$(document).ready(function (){
     		if(!$.cookie('bsd-user')) window.location = "sign-in.html";
     		$('#email').append($.cookie('bsd-user'));
+    		$('#profile').attr('src',  'http://www.gravatar.com/avatar/' + $.md5($.cookie('bsd-user').toLowerCase()) + "?s=250");
     	});
     	function logout(){
     		
