@@ -161,8 +161,6 @@
               </ul>
               <ul class="nav navbar-nav navbar-right">
               	<li class="active"><a href="user-profile.html">Your account</a></li>
-				<li><a href="sign-in.html">Sign in</a></li>
-                <li><a href="register.html">Register</a></li>
                 </ul>
             </div>
           </div>
@@ -230,6 +228,9 @@
     		if(!$.cookie('bsd-user')) window.location = "sign-in.html";
     		$('#email').append($.cookie('bsd-user'));
     	});
+    	function logout(){
+    		
+    	}
     </script>
 </body>
 </html>

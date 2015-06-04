@@ -151,7 +151,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="product_main.html">Our Products</a></li>
                 <li><a href="about-us.html">About Us</a></li>
                 <li><a href="#">Feedback</a></li>
@@ -160,9 +160,8 @@
                 
               </ul>
               <ul class="nav navbar-nav navbar-right">
-				<li><a href="sign-in.html">Sign in</a></li>
-                <li><a href="register.html">Register</a></li>
-                </ul>
+              	<li class="active"><a href="user-profile.html">Your account</a></li>
+              </ul>
             </div>
           </div>
         </nav>
@@ -183,7 +182,7 @@
                     <label>Last Name</label>
                     <input type="text" class="form-control" placeholder="c">
                     <label>Registered Email</label>
-                    <input type="text" class="form-control" placeholder="d">
+                    <input type="text" class="form-control" placeholder="d" id="email">
                     <label>Gender</label>
                     <input type="text" class="form-control" placeholder="e">
                     <label>Birth Date</label>
@@ -235,6 +234,13 @@
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function (){
+    		if(!$.cookie('bsd-user')) window.location = "sign-in.html";
+    		$('#email').val($.cookie('bsd-user'));
+    	});
+    </script>
 </body>
 
 </html>
