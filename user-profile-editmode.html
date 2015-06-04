@@ -161,6 +161,7 @@
               </ul>
               <ul class="nav navbar-nav navbar-right">
               	<li class="active"><a href="user-profile.html">Your account</a></li>
+              	<li><a href="javascript:User.logout();">Logout</a></li>
               </ul>
             </div>
           </div>
@@ -172,35 +173,35 @@
         <section style="padding-bottom: 50px; padding-top: 50px;">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="http://placehold.it/250x250" class="img-rounded img-responsive" />
+                    <img id="profile" src="http://placehold.it/250x250" class="img-rounded img-responsive" />
                     <br />
                     <br />
                     <label>Username</label>
-                    <input type="text" class="form-control" placeholder="a">
+                    <input type="text" class="form-control" id="username">
                     <label>First Name</label>
-                    <input type="text" class="form-control" placeholder="b">
+                    <input type="text" class="form-control" id="firstName">
                     <label>Last Name</label>
-                    <input type="text" class="form-control" placeholder="c">
+                    <input type="text" class="form-control" id="lastName">
                     <label>Registered Email</label>
-                    <input type="text" class="form-control" placeholder="d" id="email">
+                    <input type="text" class="form-control" id="email">
                     <label>Gender</label>
-                    <input type="text" class="form-control" placeholder="e">
+                    <input type="text" class="form-control" id="gender">
                     <label>Birth Date</label>
-                    <input type="text" class="form-control" placeholder="f">
+                    <input type="text" class="form-control" id="birthDate">
                     <label>Company Name</label>
-                    <input type="text" class="form-control" placeholder="g">
+                    <input type="text" class="form-control" id="company">
                     <label>Address</label>
-                    <input type="text" class="form-control" placeholder="h">
+                    <input type="text" class="form-control" id="address">
                     <br>
-                    <a href="#" class="btn btn-success">Update Details</a>
+                    <a href="javascript:update();" class="btn btn-success">Update Details</a>
                     <br /><br/>
                 </div>
                 <div class="col-md-8">
                     <div class="alert alert-info">
                         <h2 style="">About Yourself</h2>
-                    <textarea type="text" class="form-control" placeholder="About Yourself" style="height:160px;"></textarea>
+                    <textarea type="text" class="form-control" placeholder="About Yourself" id="about" style="height:160px;"></textarea>
                     <br>
-                    <a href="#" class="btn btn-success">Update Details</a>
+                    <a href="javascript:update();" class="btn btn-success">Update Details</a>
 
                     </div>
                     
@@ -235,11 +236,28 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.md5.js"></script>
+    <script type="text/javascript" src="js/users.js"></script>
     <script type="text/javascript">
     	$(document).ready(function (){
-    		if(!$.cookie('bsd-user')) window.location = "sign-in.html";
-    		$('#email').val($.cookie('bsd-user'));
+    		if(!User.login()) window.location = "sign-in.html";
+    		$('#email').val(User.login());
+    		$('#profile').attr('src', 'http://www.gravatar.com/avatar/' + $.md5(User.login().toLowerCase()) + "?s=250");
+    		for(k in User.defaultProfile){
+					if(typeof(User.defaultProfile[k])!== 'function'){
+						$('#' + k).val(User.profile(k));
+					}
+				}
     	});
+    	function update(){
+    		User.login($('email').val());
+    		for(k in User.defaultProfile){
+    			if(typeof(User.defaultProfile[k])!== 'function'){
+						User.profile(k, $('#' + k).val());
+					}
+				}
+				window.location="user-profile.html";
+    	}
     </script>
 </body>
 

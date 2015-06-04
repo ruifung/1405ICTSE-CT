@@ -1,158 +1,48 @@
-/*jslint browser: true*/
-// USER MANAGEMENT EMULATION IN JAVASCRIPT
-// REQUIRES lz-string.min.js & jQuery.
+// remake
 
-var userJS = {
-    
-    users : {},
-    userProfiles: {},
-    //THESE ARE ERROR CODES FOR YOU TO COMPARE AGAINST.
-    //USE LIKE userJS.errors.UsernameError or something like that yes?
-    errors : {
-        UsernameError: 0x555352,
-        PasswordError: 0x505744,
-        EmailError: 0x454d4c,
-        ExtraLoginError: 0x01AC0F
-    },
-    
-    //Login function
-    //Returns username on success.
-    //Throws error on failure.
-    // Errors must be caught. (By caught I mean try/catch)
-    login : function(username, password, persist) {
-        var current = sessionStorage.getItem("usersJS.currentUser");
-        //IF ALREADY LOGGED IN, THROW ERROR.
-        if(current === null || current === "") {
-            throw this.ExtraLoginError;
-        }
-        //IF USERNAME DOES NOT EXIST, THROW ERROR.
-        if ((typeof this.users[username]) === "undefined") {
-            throw this.errors.UsernameError;
-        }
-        //IF INVALID PASSWORD, THROW ERROR.
-        //ELSE RETURN USERNAME!
-        if (this.checkpw(username, password)) {
-            sessionStorage.setItem("usersJS.currentUser",username);
-            if(persist) {
-                localStorage.setItem("usersJS.persistUser",username);
-            }
-            return username;
-        } else {
-            throw this.errors.PasswordError;
-        }
-    },
-    
-    //Logout function
-    //No return value, always suceeds.
-    logout : function() {
-        sessionStorage.setItem("usersJS.currentUser","");
-        localStorage.setItem("usersJS.persistUser","");
-    },
-    
-    //Get currently logged in user
-    //Returns username.
-    //  null if no user logged in.
-    getLoggedInUser : function() {
-        var user = sessionStorage.getItem("usersJS.currentUser");
-        if (user === "") {
-            return null;
-        }
-        return user;
-    },
-    
-    
-    //Gets user information
-    // returns object with user data.
-    getUserInfo : function(username) {
-        //IF USERNAME DOES NOT EXIST, THROW ERROR.
-        if ((typeof this.users[username]) === "undefined") {
-            throw this.errors.UsernameError;
-        }
-        
-        return {
-            username: username,
-            email: this.users[username].eml
-        };
-    },
-    
-    //Register a user
-    // No return value
-    // Throws exception on failure. (Catch them.)
-    register : function(username, pwd, email) {
-        if (username.length < 6) {
-            throw this.errors.UsernameError;
-        }
-        if (pwd.length < 6) {
-            throw this.errors.PasswordError;
-        }
-        
-        //YES I KNOW IM STORING IT IN PLAINTEXT
-        var userData = {
-            pwd: window.btoa(pwd),
-            eml: email
-        };
-        this.users[username] = userData;
-        this.saveData();
-        return;
-    },
-    
-    checkpw : function(username,password) {
-        return this.users[username].pwd === window.btoa(password)
-    },
-    
-    changepw : function(username, oldpwd, newpwd) {
-        if (this.checkpw(username,oldpwd)) {
-            this.users[username].pwd = window.btoa(newpwd);
-            this.saveData();
-        } else {
-            throw this.errors.PasswordError;
-        }
-    },
-    
-    setUserProfile : function(username,profileObj) {
-        this.userProfiles[username] = profileObj;
-        this.saveData();
-    },
-    
-    getUserProfile : function(username) {
-        if(this.users[username] === undefined || this.userProfiles[username] === undefined) {
-            throw this.errors.UsernameError;
-        }
-        else return this.userProfiles[username];
-    },
-    
-    //LOADDATA AND SAVEDATA ARE USED INTERNALLY.
-    saveData : function() {
-        var jsonString = JSON.stringify(this.users);
-        var compressed = LZString.compressToUTF16(jsonString);
-        localStorage.setItem("usersJS.emuDB",compressed);
-        
-        jsonString = JSON.stringify(this.userProfiles);
-        compressed = LZString.compressToUTF16(jsonString);
-        localStorage.setItem("usersJS.profileDB",compressed);
-    },
-    
-    loadData : function() {
-        var compressed = localStorage.getItem("usersJS.emuDB");
-        if (typeof compressed === null) {
-            return;
-        }
-        var jsonString = LZString.decompressFromUTF16(compressed);
-        var loadedData = JSON.parse(jsonString);
-        jQuery.extend(this.users,loadedData);
-        
-        compressed = localStorage.getItem("usersJS.profileDB");
-        if (typeof compressed === null) {
-            return;
-        }
-        jsonString = LZString.decompressFromUTF16(compressed);
-        loadedData = JSON.parse(jsonString);
-        jQuery.extend(this.userProfiles,loadedData);
-        
-        var persistUser = localStorage.getItem("usersJS.persistUser");
-        if (typeof this.users[persistUser] !== undefined) {
-            sessionStorage.setItem("usersJS.currentUser",persistUser);
-        }
-    }
-}
-userJS.loadData();
+var User = {
+	defaultProfile : {
+		username : "yrf",
+		firstName : "Professor",
+		lastName : "Yip",
+		gender : "Male",
+		birthDate : "30-2-2017",
+		company : "Apple INC",
+		address : "444 Lorong Bahaya",
+		about : "I am Proffesor!!!"
+	},
+	login : function(email, remember){
+		if(typeof(email) === 'undefined'){
+			return $.cookie('bsd-email');
+		}else{
+			var attr = {};
+			if(remember) attr['expires'] = 7;
+			$.cookie('bsd-email', email, attr);
+			for(k in User.defaultProfile){
+				if(typeof(User.defaultProfile[k])!== 'function'){
+					$.cookie("bsd-" + k, User.defaultProfile[k], attr);
+				}
+			}
+		}
+	},
+	logout : function(){
+		$.removeCookie('bsd-email');
+		for(k in User.defaultProfile){
+			if(typeof(User.defaultProfile[k])!== 'function'){
+				$.removeCookie("bsd-" + k);
+			}
+		}
+		window.location = window.location.href;
+	},
+	profile : function(key, val){
+		if(typeof(val) === 'undefined'){
+			if($.cookie('bsd-' + key)){
+				return $.cookie('bsd-' + key);
+			}else{
+				return User.defaultProfile[k];
+			}
+		}else{
+			$.cookie('bsd-' + key, val);
+		}
+	}
+};

@@ -161,6 +161,7 @@
               </ul>
               <ul class="nav navbar-nav navbar-right">
               	<li class="active"><a href="user-profile.html">Your account</a></li>
+              	<li><a href="javascript:User.logout();">Logout</a></li>
                 </ul>
             </div>
           </div>
@@ -176,21 +177,21 @@
                     <br />
                     <br />
                     <label>Username:</label>
-                    <p>a</p>
+                    <p id="username"></p>
                     <label>First Name:</label>
-                    <p>b</p>
+                    <p id="firstName"></p>
                     <label>Last Name:</label>
-                    <p>c</p>
+                    <p id="lastName"></p>
                     <label>Registered Email:</label>
                     <p id="email"></p>
                     <label>Gender:</label>
-                    <p>e</p>
+                    <p id="gender"></p>
                     <label>Birth Date:</label>
-                    <p>f</p>
+                    <p id="birthDate"></p>
                     <label>Company Name:</label>
-                    <p>g</p>
+                    <p id="company"></p>
                     <label>Address:</label>
-                    <p>h</p>
+                    <p id="address"></p>
                     <br />
                     <br>
                     <a href="user-profile-editmode.html" class="btn btn-success">Edit Details</a><br><br>
@@ -198,7 +199,7 @@
                 <div class="col-md-8">
                     <div class="alert alert-info">
                         <h2 style="">About Yourself</h2>
-                    <p>You</p>
+                    <p id="about"></p>
 
                     </div>
                     
@@ -223,15 +224,18 @@
     <script src="js/ie10-viewport-bug-workaround.js"></script>
     <script type="text/javascript" src="js/jquery.md5.js"></script>
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/users.js"></script>
     <script type="text/javascript">
     	$(document).ready(function (){
-    		if(!$.cookie('bsd-user')) window.location = "sign-in.html";
-    		$('#email').append($.cookie('bsd-user'));
-    		$('#profile').attr('src',  'http://www.gravatar.com/avatar/' + $.md5($.cookie('bsd-user').toLowerCase()) + "?s=250");
+    		if(!User.login()) window.location = "sign-in.html";
+    		$('#email').append(User.login());
+    		$('#profile').attr('src', 'http://www.gravatar.com/avatar/' + $.md5(User.login().toLowerCase()) + "?s=250");
+    		for(k in User.defaultProfile){
+				if(typeof(User.defaultProfile[k])!== 'function'){
+						$('#' + k).append(User.profile(k));
+					}
+				}
     	});
-    	function logout(){
-    		
-    	}
     </script>
 </body>
 </html>

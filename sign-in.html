@@ -194,13 +194,12 @@
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/users.js"></script>
     <script type="text/javascript">
     	$(document).ready(function (){
-    		if($.cookie('bsd-user')) window.location = "user-profile.html";
+    		if(User.login()) window.location = "user-profile.html";
     		$( ".form-signin" ).submit(function( event ) {
-    			var attr = {};
-    			if ($("#remember")[0].checked) attr['expires'] = 7; 
-    			$.cookie('bsd-user', $("#inputEmail").val(), attr);
+    			User.login($("#inputEmail").val(), $('#remember')[0].checked);
     			window.location = "index.html";
 					event.preventDefault();
 				});
