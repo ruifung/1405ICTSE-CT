@@ -166,9 +166,10 @@
                 
               </ul>
               <ul class="nav navbar-nav navbar-right">
-              <li><a href="user-profile.html">Your account</a></li>
-				<li><a href="sign-in.html">Sign in</a></li>
-                <li><a href="register.html">Register</a></li>
+              <li class="logged"><a href="user-profile.html">Your account</a></li>
+              <li class="logged"><a href="javascript:User.logout();">Logout</a></li>
+							<li class="unlogged"><a href="sign-in.html">Sign in</a></li>
+              <li class="unlogged"><a href="register.html">Register</a></li>
                 </ul>
             </div>
           </div>
@@ -354,7 +355,16 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.js"></script>
-
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/users.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function (){
+    		if(User.login){
+    			if (!User.login())$('.logged').css("display","none");
+    			else $('.unlogged').css("display","none");
+    		}
+    	});
+    </script>
 </body>
 
 </html>
