@@ -1,9 +1,0 @@
-// JavaScript Object Notation Document
-objects  = [
-{"ItemName":"Cake#1", "desc":"love cake", "link":"product_A.html"},
-{"ItemName":"Cake#2", "desc":"love cake too", "link":"product_B.html"},
-{"ItemName":"Cake#3", "desc":"Delightful", "link":"product_C.html"},
-{"ItemName":"Cake#4", "desc":"Enviously tasty", "link":"product_D.html"},
-{"ItemName":"Cake#5", "desc":"Fresh", "link":"product_E.html"},
-{"ItemName":"Cake#6", "desc":"Pls love cake", "link":"product_E.html"}
-]
