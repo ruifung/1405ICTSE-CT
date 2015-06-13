@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cart - BRSTRYDEMO</title>
+
+   <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+<style type="text/css">
+.navbar-wrapper .navbar .container { width: auto;}
+			/*fix width*/
+			.navbar-inverse 
+			{
+			  	background-color: #005BA6;
+			  	border-color: #004E80;
+			} /*changed colours for nav bar*/
+			.navbar-inverse .navbar-nav > li > a {
+				color: #ABF5FF;
+				-webkit-transition: all .25s ease;
+       			-moz-transition: all .25s ease;
+        		-ms-transition: all .25s ease;
+         		-o-transition: all .25s ease;
+            	transition: all .25s ease;
+			}
+			.navbar-inverse .navbar-brand {
+  				color: #D8D8D8;
+			}
+			.dropdown-menu 
+			{
+				background-color: #080808;
+			} /*changed colour for dropdown menu*/
+			.dropdown-header 
+			{
+				color: #999;
+			}
+			.dropdown-menu > li > a
+			{
+				color: #DDD;
+			}
+			.lead 
+			{
+				text-align: justify;
+    			text-justify: inter-word;
+				font-family: "Myriad Pro", "Lucida Grande", Arial, Verdana, Helvetica, "Helvetica Neue", sans-serif;
+				font-weight:100;
+			}/*changed the patterns of header @ bottom parts*/
+			.btn-primary:hover,
+			.btn-primary:focus,
+			.btn-primary.focus,
+			.btn-primary:active,
+			.btn-primary.active,
+			.open > .dropdown-toggle.btn-primary 
+			{
+				background-color:#319CFF;
+				border-color:#35C3FF;
+
+			} /*changed hover and focus colour to primary (blue) button*/
+			.btn-primary
+			{
+				-webkit-transition: all .25s ease;
+       			-moz-transition: all .25s ease;
+        		-ms-transition: all .25s ease;
+         		-o-transition: all .25s ease;
+            	transition: all .25s ease;
+			} /*added transition while hovering in && out to primary (blue) button*/
+			.btn-default 
+			{
+				color: #E0E0E0;
+  				background-color: #9F0002;
+				border-color: rgba(168, 0, 0, 0.53);
+				-webkit-transition: all .25s ease;
+       			-moz-transition: all .25s ease;
+        		-ms-transition: all .25s ease;
+         		-o-transition: all .25s ease;
+            	transition: all .25s ease;
+			} /*changed colours of active red buttons, added transition while hovering in && out*/
+			.btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default 
+			{
+				color: #FFF;
+				background-color: #DD2B2B;
+				border-color: #EFBABA;
+				
+			} /*changed colours of red buttons*/
+			.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus
+			{
+				-webkit-transition: all .25s ease;
+       			-moz-transition: all .25s ease;
+        		-ms-transition: all .25s ease;
+         		-o-transition: all .25s ease;
+            	transition: all .25s ease;
+			} /*added transitions to nav*/
+			.dropdown-menu > li > a
+			{
+				-webkit-transition: all .25s ease;
+       			-moz-transition: all .25s ease;
+
+        		-ms-transition: all .25s ease;
+         		-o-transition: all .25s ease;
+            	transition: all .25s ease;
+			} /*added transitions to dropdown menu navigation*/
+			.col-lg-6{
+				float:right;
+			} /*changed position of search bar (L to R)*/
+		</style>
+</head>
+
+<body>
+<div class="navbar-wrapper">
+	<div class="container">
+
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> <!--if navbar-static-top, users can only reach the navbar back to top; w/ navbar-fixed-top, the navbar follows users everywhere when they scroll-->
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html">BREADSTORYDEMO</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="product_main.html">Our Products</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+
+
+                
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+              <li class="logged"><a href="user-profile.html">Your account</a></li>
+              <li class="logged"><a href="javascript:User.logout();">Logout</a></li>
+							<li class="unlogged"><a href="sign-in.html">Sign in</a></li>
+              <li class="unlogged"><a href="register.html">Register</a></li>
+                </ul>
+            </div>
+          </div>
+		</nav>
+
+	</div>
+</div>
+
+<div class="container" style="margin-top:70px;">
+<div id="item">
+	<p><label>Cake Name: <span id="cakeName"></span></label></p>
+    <p><label>Size: <span id="cakeSize"></span></label></p>
+    <form class="form-inline">
+		<div class="form-group">
+    		<label>Quantity: </label>
+           </div>
+		<div class="form-group">   
+    		<input type="text" class="form-control" id="quantity" placeholder="Example: 3">
+		</div>
+        <hr>
+    <p><label>Subtotal: <span id="total"></span></label></p>
+</div>
+<hr>
+<button type="button" id="back" class="btn btn-default">Back to Item Menu</button>
+<a role="button" id="pay" class="btn btn-primary" href="payment.html">Proceed to Payment</a>
+
+
+
+
+
+       <footer style="position:absolute; bottom:0;">
+        <a onclick="copyright();" href="#">&copy; 2015 BreadStoryDemo, Inc.</a>
+      </footer>
+</div>
+
+
+<!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.js"></script>
+    
+    <script src="js/jquery.cookie.js"></script>
+    
+    
+    <script>
+    //back to item menu function
+	$(document).ready(function(){
+		$('#back').click(function(){
+			history.back();
+		});
+	});
+	</script>
+</body>
+</html>
