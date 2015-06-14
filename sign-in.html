@@ -195,14 +195,30 @@
     <script src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/users.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript">		var params = {};
+		var getParam = function(k, d){
+			if(params.hasOwnProperty(k)){
+				return params[k];
+			}else{
+				return d;
+			}
+		}
+		var url = window.location.href.split("?");
+		if(url.length == 2){
+			var temp = url[1].split("&");
+			for(var i = 0; i < temp.length; i ++){
+				var key = decodeURIComponent(temp[i].split("=")[0]);
+				var val = decodeURIComponent(temp[i].split("=")[1].replace(/\+/g, " "));
+				params[key] = val;
+			}
+		}
     	$(document).ready(function (){
     		if(User.login()) window.location = "user-profile.html";
     		$( ".form-signin" ).submit(function( event ) {
     			User.login($("#inputEmail").val(), $('#remember')[0].checked);
-    			window.location = "index.html";
-					event.preventDefault();
-				});
+    			window.location.href = getParam("redirect", "index.html");
+				event.preventDefault();
+			});
     	});
     </script>
   </body>

@@ -187,7 +187,7 @@
     			else $('.unlogged').hide();
     		}
 			$("#details").append(Cart.details());
-			if(Cart.items.length == 0){
+			if(Cart.load().length == 0){
 				$("#pay").hide();
 			}
 		});

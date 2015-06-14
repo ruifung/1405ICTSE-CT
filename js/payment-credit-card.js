@@ -68,7 +68,7 @@ function payWithStripe(e) {
 /* Fancy restrictive input formatting via jQuery.payment library*/
 $('input[name=cardNumber]').payment('formatCardNumber');
 $('input[name=cardCVC]').payment('formatCardCVC');
-$('input[name=cardExpiry').payment('formatCardExpiry');
+$('input[name=cardExpiry]').payment('formatCardExpiry');
 
 
 

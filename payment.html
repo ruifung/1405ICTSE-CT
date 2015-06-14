@@ -150,10 +150,8 @@
                 
               </ul>
               <ul class="nav navbar-nav navbar-right">
-              <li class="logged"><a href="user-profile.html">Your account</a></li>
-              <li class="logged"><a href="javascript:User.logout();">Logout</a></li>
-							<li class="unlogged"><a href="sign-in.html">Sign in</a></li>
-              <li class="unlogged"><a href="register.html">Register</a></li>
+              <li><a href="user-profile.html">Your account</a></li>
+              <li><a href="javascript:User.logout();">Logout</a></li>
                 </ul>
             </div>
           </div>
@@ -170,8 +168,8 @@
     	<label for="Name">Name</label>
         <br>
 		<form class="form-inline">
-        <input type="text" class="form-control"  name="Shipping_First_Name" id="firstName" placeholder="First Name">
-        <input type="text" class="form-control" name="Shipping_Last_Name" id="lastName"  placeholder="Last Name">
+        <input type="text" class="form-control"  name="Shipping_First_Name" id="firstName" placeholder="First Name" disabled>
+        <input type="text" class="form-control" name="Shipping_Last_Name" id="lastName"  placeholder="Last Name" disabled>
         </form>
 	</div>
 
@@ -182,27 +180,27 @@
     
     <div class="form-group">
     	<label for="email">E-mail Address</label>
-        <input type="email" class="form-control" name="Shipping_Email" id="email" placeholder="Email">
+        <input type="email" class="form-control" name="Shipping_Email" id="email" placeholder="Email" disabled>
     </div>
     
     <div class="form-group">
     	<label for="country">Country</label>
-        <select class="form-control" name="Shipping_Country_Code" id="country">
+        <select class="form-control" name="Shipping_Country_Code" id="country" forjquery>
         	<option id="Malaysia" value="MY" selected>Malaysia</option>
         </select>
     </div>
     
     <div class="form-group">
     	<label for="address">Address</label>
-        <input class="form-control" name="Shipping_Address_1" id="addr1" placeholder="Street Address"><br>
-        <input class="form-control" name="Shipping_Address_2" id="addr2" placeholder="Address Line 2"><br>
-        <div class="col-md-5" style="padding-left:0;"><input class="form-control" name="Shipping_City" id="city" placeholder="City"><br></div>
-        <div class="col-md-4" style="padding-left:0;"><input class="form-control" name="Shipping_Postcode" id="postcode" placeholder="Postcode"></div>
+        <input class="form-control" name="Shipping_Address_1" id="addr1" placeholder="Street Address" forjquery><br>
+        <input class="form-control" name="Shipping_Address_2" id="addr2" placeholder="Address Line 2" forjquery><br>
+        <div class="col-md-5" style="padding-left:0;"><input class="form-control" name="Shipping_City" id="city" placeholder="City" forjquery><br></div>
+        <div class="col-md-4" style="padding-left:0;"><input class="form-control" name="Shipping_Postcode" id="postcode" placeholder="Postcode" forjquery></div>
     </div>
     <br><br>
     <div class="form-group">
     	<label for="state">State/Province</label>
-        <select class="form-control" name="Shipping_State_Code" id="state">
+        <select class="form-control" name="Shipping_State_Code" id="state" forjquery>
         	<option id="Selangor" value="MY-10">Selangor</option>
             <option id="Selangor" value="MY-14" selected>Kuala Lumpur</option>
             <option id="Selangor" value="MY-16">Putrajaya</option>
@@ -220,22 +218,22 @@
 <div class="row">
     <div class="form-group">
     	<label for="country">Country</label>
-        <select class="form-control" name="Shipping_Country_Code" id="country">
+        <select class="form-control" name="Shipping_Country_Code" id="b_country">
         	<option id="Malaysia" value="MY" selected>Malaysia</option>
         </select>
     </div>
     
     <div class="form-group">
     	<label for="address">Address</label>
-        <input class="form-control" name="Shipping_Address_1" id="addr1" placeholder="Street Address"><br>
-        <input class="form-control" name="Shipping_Address_2" id="addr2" placeholder="Address Line 2"><br>
-        <div class="col-md-5" style="padding-left:0;"><input class="form-control" name="Shipping_City" id="city" placeholder="City"><br></div>
-        <div class="col-md-4" style="padding-left:0;"><input class="form-control" name="Shipping_Postcode" id="postcode" placeholder="Postcode"></div>
+        <input class="form-control" name="Shipping_Address_1" id="b_addr1" placeholder="Street Address"><br>
+        <input class="form-control" name="Shipping_Address_2" id="b_addr2" placeholder="Address Line 2"><br>
+        <div class="col-md-5" style="padding-left:0;"><input class="form-control" name="Shipping_City" id="b_city" placeholder="City"><br></div>
+        <div class="col-md-4" style="padding-left:0;"><input class="form-control" name="Shipping_Postcode" id="b_postcode" placeholder="Postcode"></div>
     </div>
 	    <br><br>
     <div class="form-group">
     	<label for="state">State/Province</label>
-        <select class="form-control" name="Shipping_State_Code" id="state">
+        <select class="form-control" name="Shipping_State_Code" id="b_state">
         	<option value="MY-10" id="Selangor">Selangor</option>
             <option value="MY-14" selected id="KL">Kuala Lumpur</option>
             <option value="MY-16" id="Putrajaya">Putrajaya</option>
@@ -272,7 +270,7 @@
         	<div class='col-sm-6'>
             <div class="form-group">
                 <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control"/>
+                    <input type='text' id="d_date" class="form-control"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -286,7 +284,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="next" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#pay">Next</button>
+        <button type="button" id="next" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#pay">Pay</button>
       </div>
     </div>
   </div>
@@ -322,6 +320,7 @@
                                     <label for="cardNumber">CARD NUMBER</label>
                                     <div class="input-group">
                                         <input 
+                                        	id="card"
                                             type="tel"
                                             class="form-control"
                                             name="cardNumber"
@@ -362,19 +361,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="form-group">
-                                    <label for="couponCode">MEMBER CODE</label>
-                                    <input type="text" class="form-control" name="couponCode" />
-                                </div>
-                            </div>                        
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <button onclick="location.href='success.html';" class="btn btn-success btn-lg btn-block">Proceed Payment</button>
-                            </div>
-                        </div>
                         
                     </form>
                 </div>
@@ -385,7 +371,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="next" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#pay">Next</button>
+        <button type="button" id="done" class="btn btn-primary" data-dismiss="modal" data-toggle="modal">Confirm Payment</button>
       </div>
    </div>
 </div>
@@ -404,7 +390,7 @@
     <script src="js/jquery.cookie.js"></script>
     
     <script src="js/copyright.js"></script>
-    
+    <script src="js/jquery.validate.min.js"></script>
     <script src="js/jquery.payment.min.js"></script>
     
     <script src="js/payment-credit-card.js"></script>
@@ -412,13 +398,45 @@
     <script src="js/moment-with-locales.js"></script>
     
     <script src="js/bootstrap-datetimepicker.js"></script>
-    
+    <script src="js/users.js"></script>
+    <script src="js/cart.js"></script>
     <script type="text/javascript">
-	$(function () {
-		$('#datetimepicker1').datetimepicker({
-			format: 'DD-MM-YYYY'
+	    $(document).ready(function (){
+    		if(!User.login()){
+				window.location.href = "sign-in.html?redirect=payment.html";
+    		}
+			$("#firstName").val(User.profile("firstName"));
+			$("#lastName").val(User.profile("lastName"));
+			$("#email").val(User.login());
+			$("#addr1").val(User.profile("address"));
+			var input = $('*[forjquery]');
+			input.change(function(){
+				if ($("#billing-same")[0].checked){
+					$("#b_" + this.id).val($(this).val());
+				}
+			});
+			$("#billing-same").click(function(){
+				if(this.checked){
+					for(var i = 0; i < input.length; i ++){
+						$("#b_" + input[i].id).attr('disabled','');
+						$("#b_" + input[i].id).val($(input[i]).val());
+					}
+				}else {
+					for(var i = 0; i < input.length; i ++){
+						$("#b_" + input[i].id).removeAttr('disabled');
+					}
+				}
+			});
+			$("#done").click(function(){
+				$.cookie("bsd-d_date", $('#d_date').val());
+				window.location.href = "receipt.html";
+			});
+    	});
+		$(function () {
+			$('#datetimepicker1').datetimepicker({
+				format: 'DD-MM-YYYY'
+			});
 		});
-	});
 	</script>
     
 </body>

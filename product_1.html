@@ -349,23 +349,24 @@
     <script src="js/users.js"></script>
     <script src="js/cart.js"></script>
     <script type="text/javascript">
-		var cake = Cart.newItem();
+		var cake = new Cart.Item();
 		cake.name = "The Green leaf";
 		cake.price = 71.99;
-    	$(document).ready(function (){
-    		if(User.login){
-    			if (!User.login())$('.logged').css("display","none");
-    			else $('.unlogged').css("display","none");
-    		}
+		$(document).ready(function (){
+			if(User.login){
+				if (!User.login())$('.logged').css("display","none");
+				else $('.unlogged').css("display","none");
+			}
 			$("input[name=leafSize]").click(function(){
 				cake.size = $(this).val();
 				cake.price = parseFloat($(this).attr("price"));
 			});
-			$("#addcart").click(function(){
+			$("#addcart").off();
+			$("#addcart").click(function(event){
 				cake.quantity = parseInt($("#quantity").val());
 				Cart.add(cake);
 			});
-    	});
+		});
     </script>
 
 </body>

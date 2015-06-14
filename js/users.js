@@ -18,8 +18,8 @@ var User = {
 			var attr = {};
 			if(remember) attr['expires'] = 7;
 			$.cookie('bsd-email', email, attr);
-			for(k in User.defaultProfile){
-				if(typeof(User.defaultProfile[k])!== 'function'){
+			for(k in this.defaultProfile){
+				if(typeof(this.defaultProfile[k])!== 'function'){
 					$.cookie("bsd-" + k, User.defaultProfile[k], attr);
 				}
 			}
@@ -27,8 +27,8 @@ var User = {
 	},
 	logout : function(){
 		$.removeCookie('bsd-email');
-		for(k in User.defaultProfile){
-			if(typeof(User.defaultProfile[k])!== 'function'){
+		for(k in this.defaultProfile){
+			if(typeof(this.defaultProfile[k])!== 'function'){
 				$.removeCookie("bsd-" + k);
 			}
 		}
@@ -39,7 +39,7 @@ var User = {
 			if($.cookie('bsd-' + key)){
 				return $.cookie('bsd-' + key);
 			}else{
-				return User.defaultProfile[k];
+				return this.defaultProfile[k];
 			}
 		}else{
 			$.cookie('bsd-' + key, val);
