@@ -120,6 +120,8 @@
         
         <!--Date and Time Picker-->
         <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+        
+        <link href="css/payment-credit-card.css" rel="stylesheet">
 </head>
 
 <body>
@@ -302,12 +304,118 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="next" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#cap">Next</button>
+        <button type="button" id="next" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#pay">Next</button>
       </div>
     </div>
   </div>
-<!--------End of first pop up to choose model------------>
+<!--------End of first pop up to choose date------------>
 
+<!------------Second pop up for payment details------------>
+<div class="modal fade" id="pay" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Third Step</h4>
+      </div>
+		<div class="modal-body">
+        <h4>Payment Details</h4>
+
+        
+            <!-- CREDIT CARD FORM STARTS HERE -->
+            <div class="panel panel-default credit-card-box">
+                <div class="panel-heading display-table" >
+                    <div class="row display-tr" >
+                        <h3 class="panel-title display-td" >Payment Details</h3>
+                        <div class="display-td" >                            
+                            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+                        </div>
+                    </div>                    
+                </div>
+                <div class="panel-body">
+                    <form role="form" id="payment-form">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">CARD NUMBER</label>
+                                    <div class="input-group">
+                                        <input 
+                                            type="tel"
+                                            class="form-control"
+                                            name="cardNumber"
+                                            placeholder="Valid Card Number"
+                                            autocomplete="cc-number"
+                                            required autofocus 
+                                        />
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group">
+                                    <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                                    <input 
+                                        type="tel" 
+                                        class="form-control" 
+                                        name="cardExpiry"
+                                        placeholder="MM / YY"
+                                        autocomplete="cc-exp"
+                                        required 
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label for="cardCVC">CV CODE</label>
+                                    <input 
+                                        type="tel" 
+                                        class="form-control"
+                                        name="cardCVC"
+                                        placeholder="CVC"
+                                        autocomplete="cc-csc"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="couponCode">COUPON CODE</label>
+                                    <input type="text" class="form-control" name="couponCode" />
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button class="btn btn-success btn-lg btn-block" type="submit">Proceed Payment</button>
+                            </div>
+                        </div>
+                        <div class="row" style="display:none;">
+                            <div class="col-xs-12">
+                                <p class="payment-errors"></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>            
+            <!-- CREDIT CARD FORM ENDS HERE -->
+
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="next" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#pay">Next</button>
+      </div>
+   </div>
+</div>
+
+
+<!--------End of first pop up for payment details------------>
+
+<!---================= END Modal Pop-up ====================--->
 
 	<!-- jQuery -->
     <script src="js/jquery.js"></script>
@@ -319,14 +427,24 @@
     
     <script src="js/copyright.js"></script>
     
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    
+    <script src="js/jquery.validate.min.js"></script>
+    
+    <script src="js/jquery.payment.min.js"></script>
+    
+    <script src="js/payment-credit-card.js"></script>
+    
     <script src="js/moment-with-locales.js"></script>
     
     <script src="js/bootstrap-datetimepicker.js"></script>
     
     <script type="text/javascript">
 	$(function () {
-		$('#datetimepicker1').datetimepicker();
-					});
+		$('#datetimepicker1').datetimepicker({
+			format: 'DD-MM-YYYY'
+		});
+	});
 	</script>
     
 </body>
