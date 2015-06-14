@@ -208,7 +208,8 @@
             <option id="Selangor" value="MY-16">Putrajaya</option>
         </select>
     </div>
-    
+    <input type="checkbox" name="billing-same" id="billing-same"> Shipping address is the same with billing address
+    </label>
 </div>
 </div>
 
@@ -217,25 +218,6 @@
 <div class="col-md-8">
 <h3>2. Billing Address</h3>
 <div class="row">
-	<div class="form-group">
-    	<label for="Name">Name</label>
-        <br>
-		<form class="form-inline">
-        <input  name="Shipping_First_Name" type="text" class="form-control" id="firstName" placeholder="First Name">
-        <input type="text" class="form-control" name="Shipping_Last_Name" id="lastName"  placeholder="Last Name">
-        </form>
-	</div>
-
-    <div class="form-group">
-    	<label for="Phone">Phone Number</label>
-        <input name="Shipping_Phone" id="phone" placeholder="Phone" class="form-control">
-    </div>
-    
-    <div class="form-group">
-    	<label for="email">E-mail Address</label>
-        <input type="email" class="form-control" name="Shipping_Email" id="email" placeholder="Email">
-    </div>
-    
     <div class="form-group">
     	<label for="country">Country</label>
         <select class="form-control" name="Shipping_Country_Code" id="country">
@@ -383,21 +365,17 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <label for="couponCode">COUPON CODE</label>
+                                    <label for="couponCode">MEMBER CODE</label>
                                     <input type="text" class="form-control" name="couponCode" />
                                 </div>
                             </div>                        
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-success btn-lg btn-block" type="submit">Proceed Payment</button>
+                                <a href="success.html"><button class="btn btn-success btn-lg btn-block">Proceed Payment</button></a>
                             </div>
                         </div>
-                        <div class="row" style="display:none;">
-                            <div class="col-xs-12">
-                                <p class="payment-errors"></p>
-                            </div>
-                        </div>
+                        
                     </form>
                 </div>
             </div>            
