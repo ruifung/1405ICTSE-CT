@@ -27,12 +27,6 @@ $form.on('submit', payWithStripe);
 /* If you're using Stripe for payments */
 function payWithStripe(e) {
     e.preventDefault();
-
-    /* Visual feedback */
-    $form.find('[type=submit]').html('Validating <i class="fa fa-spinner fa-pulse"></i>');
-
-    var PublishableKey = 'pk_test_6pRNASCoBOKtIshFeQd4XMUh'; // Replace with your API publishable key
-    Stripe.setPublishableKey(PublishableKey);
     
     /* Create token */
     var expiry = $form.find('[name=cardExpiry]').payment('cardExpiryVal');
@@ -42,6 +36,7 @@ function payWithStripe(e) {
         exp_month: expiry.month, 
         exp_year: expiry.year
     };
+    
 
 }
 /* Fancy restrictive input formatting via jQuery.payment library*/
