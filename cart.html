@@ -150,18 +150,8 @@
 </div>
 
 <div class="container" style="margin-top:70px;">
-<div id="item">
-	<p><label>Cake Name: <span id="cakeName"></span></label></p>
-    <p><label>Size: <span id="cakeSize"></span></label></p>
-    <form class="form-inline">
-		<div class="form-group">
-    		<label>Quantity: </label>
-           </div>
-		<div class="form-group">   
-    		<input type="text" class="form-control" id="quantity" placeholder="Example: 3">
-		</div>
-        <hr>
-    <p><label>Subtotal: <span id="total"></span></label></p>
+<div id="details">
+<!--item list will be here-->
 </div>
 <hr>
 <button type="button" id="back" class="btn btn-default">Back to Item Menu</button>
@@ -171,7 +161,7 @@
 
 
 
-       <footer style="position:absolute; bottom:0;">
+       <footer style="position:absolute;bottom:0;">
         <a onclick="copyright();" href="#">&copy; 2015 BreadStoryDemo, Inc.</a>
       </footer>
 </div>
@@ -184,15 +174,23 @@
     <script src="js/bootstrap.js"></script>
     
     <script src="js/jquery.cookie.js"></script>
-    
+    <script src="js/users.js"></script>
+    <script src="js/cart.js"></script>
     
     <script>
-    //back to item menu function
-	$(document).ready(function(){
-		$('#back').click(function(){
-			history.back();
+		$(document).ready(function(){
+			$('#back').click(function(){
+				history.back();
+			});
+    		if(User.login){
+    			if (!User.login())$('.logged').hide();
+    			else $('.unlogged').hide();
+    		}
+			$("#details").append(Cart.details());
+			if(Cart.items.length == 0){
+				$("#pay").hide();
+			}
 		});
-	});
 	</script>
 </body>
 </html>

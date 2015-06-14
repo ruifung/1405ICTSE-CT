@@ -302,29 +302,34 @@
         <h4>Please choose your preferred size of the cake:</h4>
         <div class="radio">
           <label>
-            <input type="radio" name="leafSize" id="optionsRadios1" value="XS" disabled>
+            <input type="radio" name="leafSize" id="optionsRadios1" value="Sliced" price="11.99" disabled>
             Sliced (1/8 of Medium) - RM11.99
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="leafSize" id="optionsRadios2" value="S" disabled>
+            <input type="radio" name="leafSize" id="optionsRadios2" value="Small" price="55.99" disabled>
             Small (5.2 in x 5.2 in x 4.4 in) - RM55.99
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="leafSize" id="optionsRadios3" value="M">
+            <input type="radio" name="leafSize" id="optionsRadios3" value="Medium" price="71.99">
             Medium (6.5 in x 6.5 in x 5.3 in) - RM 71.99
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="leafSize" id="optionsRadios4" value="L">
+            <input type="radio" name="leafSize" id="optionsRadios4" value="Large" price="83.99">
             Large (7.65 in x 7.65 in x 5.9 in) - RM 83.99
           </label>
         </div>
-        
+        <div class="form-group">
+    		<label>Quantity: </label>
+        </div>
+		<div class="form-group"> 
+    		<input type="text" class="form-control" id="quantity" value="1" pattern="\d+" title="Number" placeholder="Example: 3">
+		</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -341,6 +346,27 @@
     <script src="js/bootstrap.js"></script>
     
     <script src="js/jquery.cookie.js"></script>
+    <script src="js/users.js"></script>
+    <script src="js/cart.js"></script>
+    <script type="text/javascript">
+		var cake = Cart.newItem();
+		cake.name = "The Green leaf";
+		cake.price = 71.99;
+    	$(document).ready(function (){
+    		if(User.login){
+    			if (!User.login())$('.logged').css("display","none");
+    			else $('.unlogged').css("display","none");
+    		}
+			$("input[name=leafSize]").click(function(){
+				cake.size = $(this).val();
+				cake.price = parseFloat($(this).attr("price"));
+			});
+			$("#addcart").click(function(){
+				cake.quantity = parseInt($("#quantity").val());
+				Cart.add(cake);
+			});
+    	});
+    </script>
 
 </body>
 
