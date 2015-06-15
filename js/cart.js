@@ -2,6 +2,7 @@ var Cart = {
 	Item: function(){},
 	load: function(){
 		temp = [];
+		console.log($.cookie("bsd-cart"));
 		if($.cookie("bsd-cart"))items = JSON.parse($.cookie("bsd-cart"));
 		for(var i = 0; i < items.length; i++) items[i] = $.extend({}, Cart.Item.prototype, items[i]);
 		return items;
