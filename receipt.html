@@ -4,6 +4,7 @@
         <title></title>
     </head>
     <body>
+    <!--Ignore this message-->
     	<p><strong>GST Reg No: </strong><span>1234567890</span></p>
         <p><strong>Customer: </strong><span id="customer"></span></p>
         <p><strong>Payment Date: </strong><span id="date1"></span></p>
@@ -23,7 +24,7 @@
 				$("#customer").html(User.profile("firstName") + " " + User.profile("lastName"));
 				$("#date1").html(to2(d.getDate()) + "-" + to2(d.getMonth() + 1) + "-" + d.getFullYear());
 				$("#date2").html($.cookie("bsd-d_date"));
-				$("#ref").html((Math.random() * 100001).toFixed(0));
+				$("#ref").html((Math.random() * 100000).toFixed(0));
 				$("#receipt").append(Cart.receipt());
 			});
         </script>
