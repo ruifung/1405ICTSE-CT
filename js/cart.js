@@ -22,7 +22,7 @@ var Cart = {
 		}
 	},
 	clear: function(){
-		$.removeCookie("bst-cart");
+		$.removeCookie('bsd-cart');
 	},
 	total: function(){
 		var items = Cart.load();
