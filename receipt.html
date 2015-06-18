@@ -1,7 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
+        <title>Machine Generated Receipt</title>
+        <style>
+        	body{
+        		width: 700px;
+        	}
+        	table{
+        		width:100%;
+        		border-collapse: collapse;
+        	}
+        	th, td {
+					   border-right: 1px solid #ccc;
+					}
+					th:last-child, td:last-child, tr:last-child{
+						border:none;
+					}
+					tr>th, tr>td{
+						padding: 3px 10px;
+					}
+					tr>*:first-child{
+						width: 45%;
+					}
+					tr{
+						border-bottom: 1px solid #ccc;
+					}
+					tr:first-child, tr:nth-last-child(3){
+						border-bottom: 1px solid black;
+					}
+					tr:nth-last-child(1)>th, tr:nth-last-child(2)>th{
+						text-align: left;
+					}
+					tr>td{
+						text-align: right;
+					}
+					tr>td:first-child{
+						text-align: left;
+					}
+        </style>
     </head>
     <body>
     <div id="toPrint">
@@ -15,10 +51,10 @@
         <div id='ship-addr'></div>
         <hr>
         <div id='bill-addr'></div>
-        <hr>
+        <hr/>
         <div id='receipt'></div>
+        <hr/>
      </div>
-        <hr>
         <button type="button" onClick="removeCookie()" class="btn btn-primary">Proceed to Menu</a>
         <button type="button" onClick="printf()" class="btn btn-default">Print</button>
         <script src="js/jquery.js"></script>
@@ -38,12 +74,10 @@
 				$("#receipt").append(Cart.receipt());
 				
 				$("#ship-addr").html($.cookie("bsd-addr1") + "<br>" + $.cookie("bsd-addr2") + "<br>" + $.cookie("bsd-postcode") + " " + $.cookie("bsd-city") + "<br>" + $.cookie("bsd-country"));
-				$("#bill-addr").html($.cookie("bill-addr1") + "<br>" + $.cookie("bill-addr2") + "<br>" + $.cookie("bill-postcode") + " " + $.cookie("bill-city") + "<br>" + $.cookie("tech-country"));
-				
-				
+				$("#bill-addr").html($.cookie("bill-addr1") + "<br>" + $.cookie("bill-addr2") + "<br>" + $.cookie("bill-postcode") + " " + $.cookie("bill-city") + "<br>" + $.cookie("bill-country"));
+				Cart.clear();
 			});
 			function removeCookie(){
-				for (var cookies in $.cookie()) $.removeCookie(cookies);
 				window.location.href = "index.html";
 			}
 			

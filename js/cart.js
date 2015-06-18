@@ -70,8 +70,8 @@ var Cart = {
 			var tr = $(document.createElement('tr'));
 			tr.append("<td>" + items[i].name + " - " + items[i].size + "</td>");
 			tr.append("<td>" + items[i].quantity + "</td>");
-			tr.append("<td>" + items[i].price + "</td>");
-			tr.append("<td>" + items[i].total() + "</td>");
+			tr.append("<td>" + items[i].price.toFixed(2) + "</td>");
+			tr.append("<td>" + items[i].total().toFixed(2) + "</td>");
 			tbody.append(tr);
 		};
 		tbody.append("<tr><td></td><td></td><th>6% GST:</th><td>" + (Cart.total() * 0.06).toFixed(2) + "</td></tr>");
