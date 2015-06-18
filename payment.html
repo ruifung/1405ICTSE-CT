@@ -145,6 +145,7 @@
                 <li class="active"><a href="product_main.html">Our Products</a></li>
                 <li><a href="about-us.html">About Us</a></li>
                 <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="cart.html">Cart</a></li>
 
 
                 
@@ -429,6 +430,21 @@
 			});
 			$("#done").click(function(){
 				$.cookie("bsd-d_date", $('#d_date').val());
+				$.cookie("bsd-firstName",$('#firstName').val());
+				$.cookie("bsd-lastName",$('#lastName').val());
+				$.cookie("bsd-phone",$('#phone').val());
+				$.cookie("bsd-email",$('#email').val());
+				$.cookie("bsd-country",$('#country').val());
+				$.cookie("bsd-addr1",$('#addr1').val());
+				$.cookie("bsd-addr2",$('#addr2').val());
+				$.cookie("bsd-city",$('#city').val());
+				$.cookie("bsd-postcode",$('#postcode').val());
+				
+				$.cookie("bill-country",$('#b_country').val());
+				$.cookie("bill-addr1",$('#b_addr1').val());
+				$.cookie("bill-addr2",$('#b_addr2').val());
+				$.cookie("bill-city",$('#b_city').val());
+				$.cookie("bill-postcode",$('#b_postcode').val());
 				window.location.href = "receipt.html";
 			});
     	});

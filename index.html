@@ -159,6 +159,7 @@
                 <li><a href="product_main.html">Our Products</a></li>
                 <li><a href="about-us.html">About Us</a></li>
                 <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="cart.html">Cart</a></li>
 
 
                 
@@ -261,13 +262,21 @@
 <br>   
 <hr>
 
-<div>
+<div class="container">
 <style type="text/css">
 .abc{
-	width: 50%;
+	width:500px;
 	float: right;
 	height: auto;
-}</style>
+}/*fix position of search bar*/
+@media (max-width: 767px){
+.abc{
+	width:100%;
+	float: right;
+	height: auto;
+}/*fix position of search bar*/
+}
+</style>
 <div class="abc row container">
 <script>
   (function() {

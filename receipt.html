@@ -4,13 +4,23 @@
         <title></title>
     </head>
     <body>
+    <div id="toPrint">
     <!--Ignore this message-->
     	<p><strong>GST Reg No: </strong><span>1234567890</span></p>
         <p><strong>Customer: </strong><span id="customer"></span></p>
         <p><strong>Payment Date: </strong><span id="date1"></span></p>
         <p><strong>Delivery Date: </strong><span id="date2"></span></p>
         <p><strong>Reference No: </strong><span id="ref"></span></p>
+        <hr>
+        <div id='ship-addr'></div>
+        <hr>
+        <div id='bill-addr'></div>
+        <hr>
         <div id='receipt'></div>
+     </div>
+        <hr>
+        <button type="button" onClick="removeCookie()" class="btn btn-primary">Proceed to Menu</a>
+        <button type="button" onClick="printf()" class="btn btn-default">Print</button>
         <script src="js/jquery.js"></script>
         <script src="js/jquery.cookie.js"></script>
         <script src="js/users.js"></script>
@@ -26,7 +36,27 @@
 				$("#date2").html($.cookie("bsd-d_date"));
 				$("#ref").html((Math.random() * 100000).toFixed(0));
 				$("#receipt").append(Cart.receipt());
+				
+				$("#ship-addr").html($.cookie("bsd-addr1") + "<br>" + $.cookie("bsd-addr2") + "<br>" + $.cookie("bsd-postcode") + " " + $.cookie("bsd-city") + "<br>" + $.cookie("bsd-country"));
+				$("#bill-addr").html($.cookie("bill-addr1") + "<br>" + $.cookie("bill-addr2") + "<br>" + $.cookie("bill-postcode") + " " + $.cookie("bill-city") + "<br>" + $.cookie("tech-country"));
+				
+				
 			});
+			function removeCookie(){
+				for (var cookies in $.cookie()) $.removeCookie(cookies);
+				window.location.href = "index.html";
+			}
+			
+			function printf(){
+				 var printContents = document.getElementById("toPrint").innerHTML;
+				 var originalContents = document.body.innerHTML;
+			
+				 document.body.innerHTML = printContents;
+			
+				 window.print();
+			
+				 document.body.innerHTML = originalContents;
+			}
         </script>
 	</body>
 </html>
